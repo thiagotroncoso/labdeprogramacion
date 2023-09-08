@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import ttk
-from funciones import agregar_tarea
+from funciones import *
 
 def agregar():
     descripcion = cajadetexto.get()
@@ -8,10 +8,10 @@ def agregar():
     treeview.insert("" ,
     tkinter.END,
     text=[tarea["descripcion"]],
-    values=[tarea["fecha"],["completada"]])
+    values=[tarea["fecha"],tarea["completada"]])
 
 def eliminar():
-    
+  agregar.delete()
 
 def completar():
     pass
