@@ -11,7 +11,9 @@ def agregar():
     values=[tarea["fecha"],tarea["completada"]])
 
 def eliminar():
-  agregar.delete()
+  selecionador_de_item = treeview.selection()
+  if selecionador_de_item:
+    treeview.delete(selecionador_de_item)
 
 def completar():
     pass
