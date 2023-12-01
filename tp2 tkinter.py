@@ -1,5 +1,7 @@
 import tkinter
 from tkinter import ttk
+from tkinter import Tk
+import tkinter as tk
 from funciones import *
 from tkinter import messagebox
 
@@ -22,7 +24,9 @@ def eliminar():
 
 # esta funcion lo que haces que completar la tarea que vos eleciones la pasa de false a true
 def completar():
-  completarTarea = treeview.selection()#Creo una variable completarTarea = llamo al tree y le paso el metodo selection que selecciona la tarea dentro del tre para despues completarla o eliminarla
+  completar_tarea  = messagebox.askyesno("confirmar","¿Estas seguro que quieren completar la tarea?")
+  if completar_tarea:
+    completarTarea = treeview.selection()#Creo una variable completarTarea = llamo al tree y le paso el metodo selection que selecciona la tarea dentro del tre para despues completarla o eliminarla
   if completarTarea:
        treeview.item(completarTarea, values = (treeview.item(completarTarea)['values'][0], True))# En el if llamo a la variable completar tarea y le agrego tree y le paso el metodo item que adentro tiene un values que por default es falso entonces le decis que al tocar el boton completar pase de False a True 
 
@@ -33,13 +37,13 @@ def salir():
 
 ventana = tkinter.Tk()
 ventana.resizable(height=0,width=0)
-ventana.geometry("700x500")
+ventana.geometry("700x300")
 
  # Es este bloque es como crear una ventana y modificarle sus tamanos
-boton_eliminar= tkinter.Button(ventana,text="Eliminar",bg= "red",activebackground="red",command=eliminar)
-boton_crear= tkinter.Button(ventana,text="Agregar",bg= "green",activebackground="green", command=agregar)
-boton_completar= tkinter.Button(ventana,text="Completar",bg="yellow",activebackground="yellow",command=completar)
-boton_salir= tkinter.Button(ventana,text="Salir",bg="blue",activebackground="blue",command=salir)
+boton_eliminar= tkinter.Button(ventana,text="Eliminar",bg= "red",activebackground="red",command=eliminar,width=20)
+boton_crear= tkinter.Button(ventana,text="Agregar",bg= "green",activebackground="green", command=agregar,width=20)
+boton_completar= tkinter.Button(ventana,text="Completar",bg="yellow",activebackground="yellow",command=completar,width=20)
+boton_salir= tkinter.Button(ventana,text="Salir",bg="skyblue",activebackground="skyblue",command=salir,width=20)
  
  # Este bloque es para  crear un boton y modificarle sus manaños,color y agregarle una funcion 
 cajadetexto= tkinter.Entry(ventana,font= "helvetica 12")
@@ -53,12 +57,16 @@ treeview.heading("compl", text="realizado")
 
 # Con este bloque le agregas la caracterizacion a la columna 
 treeview.pack()
+etiqueta = tkinter.Label(text="Agregar Tarea:")
+etiqueta.pack()
+
 cajadetexto.pack()
-boton_crear.pack()
-boton_completar.pack()
-boton_eliminar.pack()
-boton_salir.pack()
+boton_crear.pack(side=tk.LEFT)
+boton_completar.pack(side=tk.LEFT)
+boton_eliminar.pack(side=tk.LEFT)
+boton_salir.pack(side=tk.LEFT)
 
 # Con este bloque haces que se visualizen los botones en la ventana la ventana 
 ventana.mainloop()
 # Con este bloque haces que se ejecute y corra el programa,
+	
